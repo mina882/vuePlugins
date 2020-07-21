@@ -1,0 +1,119 @@
+.center{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.toast{
+    .mask{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: rgba(0, 0, 0, 0.5);
+    }
+    .squarewrap{
+        @wH:100px;
+        width: @wH; 
+        height: @wH; 
+        .center(); 
+        border-radius: 15px;
+        background: rgba(0,0,0,0.8);
+        z-index: 10000;
+        //loading部分
+        .loading{
+            @ringColor: #FFF;
+            @ringSize:34px;
+            @ringBorder:4px;
+            width: @ringSize; 
+            height: @ringSize; 
+            .center(); 
+            margin-top:-12px;
+            &.nomt{
+                margin-top:0;
+            }
+            div{
+                position: absolute;	
+                width: 100%; 
+                height: 100%; 
+                top: -4px; 
+                left: -4px; 
+                border:@ringBorder solid @ringColor; 
+                border-color:@ringColor;  
+                border-radius: @ringSize;
+                &.outer{
+                    opacity: 0.4;
+                }
+                &.inner{
+                    border-top-color: transparent; 
+                    border-left-color:transparent; 
+                    border-right-color:transparent; 
+                    border-bottom-color:@ringColor;
+                    -webkit-animation:1s loadering infinite linear;
+                    animation:1s loadering infinite linear;
+                }
+            }
+        }
+
+        .iconfont{
+            @fz:40px;
+            .center(); 
+            font-size: @fz;
+            margin-top:-@fz/3 ;
+            color: #FFF;
+            &.error{
+                font-size:45px ;
+            }
+        }
+
+        //标题
+        .title{
+            @tH:30px;
+            position: absolute; 
+            font-size: 12px; 
+            bottom: 10%; 
+            width: 100%; 
+            height: @tH; 
+            line-height: @tH; 
+            overflow: hidden; 
+            left: 0; 
+            text-align: center;   
+            color: #FFF; 
+        }
+    }
+    
+
+    .rectanglewrap{
+        @regW:200px;
+        position: absolute; 
+        font-size: 14px; 
+        width: @regW;
+        .center();
+        background: rgba(0,0,0,0.8); 
+        border-radius:10px; 
+        padding:5px 10px;  
+        color:#FFF; 
+        text-align: center;
+        z-index: 10000;
+        .iconfont{ 
+            font-size: 16px; padding-right:5px; 
+            vertical-align: middle;
+        &.success{color:#74e854;}
+        &.info{color:#FFF;}
+        &.wran{ color: #ffce4c; }
+        &.error{ font-size: 20px; color: #e44135;}
+    }
+    }
+    
+}
+
+
+@-webkit-keyframes loadering{100%{
+	-webkit-transform:rotate(360deg);transform:rotate(360deg);
+	}}
+@keyframes loadering{100%{
+	-webkit-transform:rotate(360deg);transform:rotate(360deg);
+	}}
